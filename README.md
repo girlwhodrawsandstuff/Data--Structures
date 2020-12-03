@@ -1,6 +1,6 @@
 # Data-Structures
 Data Structures implemented in C.
 
-Topics covered:
+## Topics covered: ##
 * Stacks
 * Singly Linked Lists
