@@ -17,10 +17,10 @@ struct node
 };
 
 struct node *root = NULL;
-int choice, len;
-
 void main()
 {
+    int choice;
+
     while(1)
     {
         printf("Choose an option: \n");
