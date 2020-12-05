@@ -64,6 +64,72 @@ void main()
 void addAtBegin()
 {
     struct node *temp;
+    temp = (struct node *)malloc(sizeof(struct node));
+
+    printf("Enter the node data: \n");
+    scanf("%d", &temp->data);
+    temp->left = NULL;
+    temp->right = NULL;
+
+    if(root == NULL)
+    {
+        root = temp;
+    }
+    else
+    {
+        // right side connection
+        temp->right = root;
+        // left side connection
+        root->left = temp;
+        root = temp;
+    }
+    
+}
+
+void addInBetween()
+{
+    struct node *temp, *p;
+    int location, len, i;
+    len = length();
+
+    printf("Enter the location for insertion: \n");
+    scanf("%d", &location);
+
+    if(location > len)
+    {
+        printf("Invalid location. \n");
+        printf("Length of the list is %d", len);
+    }
+    else
+    {
+        temp = (struct node*)malloc(sizeof(struct node));
+        p = root;
+
+        printf("Enter the node data: \n");
+        scanf("%d", &temp->data);
+        temp->right = NULL;
+        temp->left = NULL;
+
+        while(p < location)
+        {
+            p = p->right;
+        }
+
+        // right side connection for temp
+        temp->right = p->right;
+        // next node's left side
+        p->right->left = temp;
+        // left side connection for temp
+        temp->left = p;
+        // previous node's right side
+        p->right = temp;
+    }
+    
+}
+
+void addAtEnd()
+{
+    struct node *temp;
     temp = (struct node*)malloc(sizeof(struct node));
 
     printf("Enter the node data: \n");
@@ -90,23 +156,37 @@ void addAtBegin()
     }
 }
 
-void addInBetween()
-{
-    
-}
-
-void addAtEnd()
-{
-
-}
-
 int length()
 {
+    struct node *temp = root;;
+    int count = 0;
+    
 
+    while(temp != NULL)
+    {
+        temp = temp->right;
+        count++;
+    }
+    
+    return count;
 }
 
 void display()
 {
+    struct node *temp = root;
+
+    if(temp == NULL)
+    {
+        printf("List is empty.\n");
+    }
+    else
+    {
+        while(temp != NULL)
+        {
+            printf("%d -> ", temp->data);
+            temp->right;
+        }
+    }
     
 }
 
