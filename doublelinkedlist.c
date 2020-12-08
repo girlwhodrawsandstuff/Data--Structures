@@ -7,12 +7,13 @@ void addAtEnd();
 int length();
 void display();
 void reverse();
+void deleteFromBeginning();
 
 struct node
 {
     int data;
-    struct node *left;
-    struct node *right;
+    struct node *prev;
+    struct node *next;
 };
 
 struct node *root = NULL;
@@ -25,12 +26,13 @@ void main()
     {
         printf("Choose an option: \n");
         printf("1. Insert at the beginning \n");
-        printf("2. Insert at in between \n");
+        printf("2. Insert in between \n");
         printf("3. Insert at end\n");
         printf("4. Length \n");
         printf("5. Display elements \n");
         printf("6. Reverse List \n");
-        printf("7. Quit \n");
+        printf("7. Delete from beginning\n");
+        printf("8. Quit \n");
         scanf("%d", &choice);
         
         switch(choice)
@@ -53,7 +55,9 @@ void main()
             case 6: reverse();
                 break;
 
-            case 7: exit(0);
+            case 7: deleteFromBeginning();
+
+            case 8: exit(0);
             
             default: printf("Invalid choice\n");
 
@@ -68,8 +72,8 @@ void addAtBegin()
 
     printf("Enter the node data: \n");
     scanf("%d", &temp->data);
-    temp->left = NULL;
-    temp->right = NULL;
+    temp->prev = NULL;
+    temp->next = NULL;
 
     if(root == NULL)
     {
@@ -77,13 +81,14 @@ void addAtBegin()
     }
     else
     {
-        // right side connection
-        temp->right = root;
-        // left side connection
-        root->left = temp;
+        // next side connection
+        temp->next = root;
+        // prev side connection
+        root->prev = temp;
         root = temp;
     }
     
+    printf("Node added!\n");
 }
 
 void addInBetween()
@@ -98,7 +103,11 @@ void addInBetween()
     if(location > len)
     {
         printf("Invalid location. \n");
-        printf("Length of the list is %d", len);
+        printf("Length of the list is %d\n", len);
+    }
+    else if(len < 2)
+    {
+        printf("The list must have at least 2 nodes to insert in between\n");
     }
     else
     {
@@ -107,24 +116,26 @@ void addInBetween()
 
         printf("Enter the node data: \n");
         scanf("%d", &temp->data);
-        temp->right = NULL;
-        temp->left = NULL;
+        temp->next = NULL;
+        temp->prev = NULL;
 
         while(p < location)
         {
-            p = p->right;
+            p = p->next;
         }
 
-        // right side connection for temp
-        temp->right = p->right;
-        // next node's left side
-        p->right->left = temp;
-        // left side connection for temp
-        temp->left = p;
-        // previous node's right side
-        p->right = temp;
+        // next side connection for temp
+        temp->next = p->next;
+        // next node's prev side
+        p->next->prev = temp;
+        // prev side connection for temp
+        temp->prev = p;
+        // previous node's next side
+        p->next = temp;
+        printf("Node added!\n");
     }
     
+
 }
 
 void addAtEnd()
@@ -134,8 +145,8 @@ void addAtEnd()
 
     printf("Enter the node data: \n");
     scanf("%d", &temp->data);
-    temp->left = NULL;
-    temp->right = NULL;
+    temp->prev = NULL;
+    temp->next = NULL;
 
     if(root == NULL)
     {
@@ -146,13 +157,14 @@ void addAtEnd()
         struct node *p;
         p = root;
 
-        while(p->right != NULL)
+        while(p->next != NULL)
         {
-            p = p->right;
+            p = p->next;
         }
 
-        p->right = temp;
-        temp->left = p;
+        p->next = temp;
+        temp->prev = p;
+        printf("Node added!\n");
     }
 }
 
@@ -164,7 +176,7 @@ int length()
 
     while(temp != NULL)
     {
-        temp = temp->right;
+        temp = temp->next;
         count++;
     }
     
@@ -184,7 +196,7 @@ void display()
         while(temp != NULL)
         {
             printf("%d -> ", temp->data);
-            temp->right;
+            temp = temp->next;
         }
     }
     
@@ -192,5 +204,43 @@ void display()
 
 void reverse()
 {
+    struct node *current = root;
+    struct node *nextNode = current->next;
+    
+    current->next = NULL;
+    current->prev = nextNode;
 
+    while(nextNode != NULL)
+    {
+        nextNode->prev = nextNode->next;
+        nextNode->next = current;
+        current = nextNode;
+        nextNode = nextNode->prev;
+    }
+    
+    root = current;
+    printf("List reversed!\n");
+    return root;
 }
+
+void deleteFromBeginning()
+{
+    struct node * temp;
+
+    if(root == NULL)
+    {
+        printf("List is empty.\n");
+    }
+    else
+    {
+        temp = root;
+
+        root = root->next;
+        
+        if (root != NULL)
+            root->prev = NULL;
+
+        free(temp);
+    }
+}
+

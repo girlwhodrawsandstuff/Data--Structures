@@ -25,7 +25,7 @@ void main()
     {
         printf("Choose an option: \n");
         printf("1. Insert at the beginning \n");
-        printf("2. Insert at in between \n");
+        printf("2. Insert in between \n");
         printf("3. Insert at end\n");
         printf("4. Length \n");
         printf("5. Display elements \n");
