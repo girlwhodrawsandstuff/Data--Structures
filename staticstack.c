@@ -12,8 +12,8 @@ int stack[CAPACITY], top = -1;
 
 void main()
 {
-    
-    while(1)
+
+    while (1)
     {
         int choice, item;
 
@@ -25,33 +25,39 @@ void main()
         printf("5.Quit \n");
         scanf("%d", &choice);
 
-        switch(choice)
+        switch (choice)
         {
-            case 1: printf("Enter the item to be inserted:\n");
-                    scanf("%d", &item);
-                    push(item);
-                break;
+        case 1:
+            printf("Enter the item to be inserted:\n");
+            scanf("%d", &item);
+            push(item);
+            break;
 
-            case 2: pop();
-                break;
+        case 2:
+            pop();
+            break;
 
-            case 3: traverse();
-                break;
+        case 3:
+            traverse();
+            break;
 
-            case 4: peek();
-                break;
+        case 4:
+            peek();
+            break;
 
-            case 5: exit(0);
-                break;
-            
-            default: printf("Invalid Option");
+        case 5:
+            exit(0);
+            break;
+
+        default:
+            printf("Invalid Option");
         };
     }
 }
 
 void push(int item)
 {
-    if(top >= CAPACITY -1)
+    if (top >= CAPACITY - 1)
     {
         printf("Stack is overflowed. \n");
     }
@@ -65,7 +71,7 @@ void push(int item)
 
 int pop(void)
 {
-    if(top == -1)
+    if (top == -1)
     {
         printf("Stack is empty\n");
     }
@@ -74,13 +80,12 @@ int pop(void)
         printf("Popped item: %d\n", stack[top]);
         top--;
     }
-    
 }
 
 void traverse(void)
 {
     printf("Elements of the stack are (from bottom to top): \n");
-    for(int i=top; i >= 0; i--)
+    for (int i = top; i >= 0; i--)
     {
         printf("%d\n", stack[i]);
     }

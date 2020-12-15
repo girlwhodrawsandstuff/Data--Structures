@@ -8,7 +8,7 @@ int length();
 void display();
 void reverse();
 void swap();
-void delete();
+void delete ();
 
 struct node
 {
@@ -21,7 +21,7 @@ void main()
 {
     int choice;
 
-    while(1)
+    while (1)
     {
         printf("Choose an option: \n");
         printf("1. Insert at the beginning \n");
@@ -34,37 +34,46 @@ void main()
         printf("8. Delete node \n");
         printf("9. Quit \n");
         scanf("%d", &choice);
-        
-        switch(choice)
+
+        switch (choice)
         {
-            case 1: addAtBegin();
-                break;
+        case 1:
+            addAtBegin();
+            break;
 
-            case 2: addInBetween();
-                break;
+        case 2:
+            addInBetween();
+            break;
 
-            case 3: addAtEnd();
-                break;
+        case 3:
+            addAtEnd();
+            break;
 
-            case 4: printf("Length: %d\n", length());
-                break;
+        case 4:
+            printf("Length: %d\n", length());
+            break;
 
-            case 5: display();
-                break;
+        case 5:
+            display();
+            break;
 
-            case 6: reverse();
-                break;
+        case 6:
+            reverse();
+            break;
 
-            case 7: swap();
-                break;
+        case 7:
+            swap();
+            break;
 
-            case 8: delete();
-                break;
+        case 8:
+            delete ();
+            break;
 
-            case 9: exit(0);
-            
-            default: printf("Invalid choice\n");
+        case 9:
+            exit(0);
 
+        default:
+            printf("Invalid choice\n");
         }
     }
 }
@@ -72,13 +81,13 @@ void main()
 void addAtBegin()
 {
     struct node *temp;
-    temp = (struct node*)malloc(sizeof(struct node));
+    temp = (struct node *)malloc(sizeof(struct node));
 
     printf("Enter node data: \n");
     scanf("%d", &temp->data);
     temp->next = NULL;
 
-    if(root == NULL)
+    if (root == NULL)
     {
         root = temp;
     }
@@ -96,14 +105,14 @@ void addAtBegin()
 void addInBetween()
 {
     struct node *temp, *p;
-    temp = (struct node*)malloc(sizeof(struct node));
+    temp = (struct node *)malloc(sizeof(struct node));
     int location, len, i = 1;
 
     printf("Enter the location for insertion: \n");
     scanf("%d", &location);
 
     len = length();
-    if(location > len)
+    if (location > len)
     {
         printf("Invalid location!\n");
         printf("List has %d nodes\n", len);
@@ -111,7 +120,7 @@ void addInBetween()
     else
     {
         p = root;
-        while(i < location)
+        while (i < location)
         {
             p = p->next;
             i++;
@@ -123,19 +132,18 @@ void addInBetween()
         // read node data and store the value
         temp->next = p->next;
         p->next = temp;
-
     }
 }
 
 void addAtEnd()
 {
     struct node *temp;
-    temp = (struct node*)malloc(sizeof(struct node));
+    temp = (struct node *)malloc(sizeof(struct node));
     printf("Enter node data: \n");
     scanf("%d", &temp->data);
     temp->next = NULL;
 
-    if(root == NULL)
+    if (root == NULL)
     {
         // temp contains the address of the node
         root = temp;
@@ -144,7 +152,7 @@ void addAtEnd()
     {
         struct node *p;
         p = root;
-        while(p->next != NULL)
+        while (p->next != NULL)
         {
             p = p->next;
         }
@@ -158,12 +166,12 @@ int length()
 {
     // iterative method
     struct node *temp;
-    temp = (struct node*)malloc(sizeof(struct node));
+    temp = (struct node *)malloc(sizeof(struct node));
     temp = root;
 
     int count = 0;
 
-    while(temp != NULL)
+    while (temp != NULL)
     {
         temp = temp->next;
         count++;
@@ -176,13 +184,13 @@ void display()
 {
     struct node *temp;
     temp = root;
-    if(temp == NULL)
+    if (temp == NULL)
     {
         printf("List is empty\n");
     }
     else
     {
-        while(temp != NULL)
+        while (temp != NULL)
         {
             printf("%d -> ", temp->data);
             temp = temp->next;
@@ -202,11 +210,11 @@ void reverse()
     j = len - 1;
 
     p = q = root;
-    
-    while(i<j)
+
+    while (i < j)
     {
         k = 0;
-        while(k < j)
+        while (k < j)
         {
             q = q->next;
             k++;
@@ -221,7 +229,7 @@ void reverse()
 
         // p moves to the next node
         // q moves back to the root as it can't move backwards
-        p = p-> next;
+        p = p->next;
         q = root;
     }
     printf("List reversed!\n");
@@ -231,15 +239,15 @@ void swap()
 {
     struct node *p, *q, *r;
     int location, len, i = 1;
-    
+
     len = length();
 
     p = root;
-    
+
     printf("Enter the location of the node to be swapped\n");
     scanf("%d", &location);
 
-    if(location > len)
+    if (location > len)
     {
         printf("Invalid location.\n");
         printf("The list has %d nodes", len);
@@ -247,8 +255,8 @@ void swap()
     else
     {
         // p  moves to a position before the node to be swapped
-        while(i < location - 1)
-        {   
+        while (i < location - 1)
+        {
             p = p->next;
             i++;
         }
@@ -261,26 +269,26 @@ void swap()
     q->next = r->next;
     r->next = q;
     p->next = r;
-    
+
     printf("Nodes swapped!\n");
 }
 
-void delete()
+void delete ()
 {
     struct node *temp;
-    temp = (struct node*)malloc(sizeof(struct node));
+    temp = (struct node *)malloc(sizeof(struct node));
     int location, len;
     len = length();
 
     printf("Enter the location of the node to be deleted\n");
     scanf("%d", &location);
 
-    if(location > len)
+    if (location > len)
     {
         printf("Invalid location.\n");
         printf("The list has %d nodes", len);
     }
-    else if(location == 1)
+    else if (location == 1)
     {
         temp = root;
         // assigning new right side connection
@@ -294,7 +302,7 @@ void delete()
     {
         struct node *p = root, *q;
         int i = 1;
-        while(i < location - 1)
+        while (i < location - 1)
         {
             p = p->next;
             i++;
@@ -303,11 +311,10 @@ void delete()
         q = p->next;
         // right side connection
         p->next = q->next;
-        
-        // removing old connection
-        q ->next = NULL;
-        free(q);
 
+        // removing old connection
+        q->next = NULL;
+        free(q);
     }
     printf("Node deleted!\n");
 }
