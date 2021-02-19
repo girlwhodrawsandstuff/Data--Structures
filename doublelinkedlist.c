@@ -264,7 +264,8 @@ void deleteFromBeginning()
 
 void deleteInBetween()
 {
-    int location, len=length();
+    int i = 1;
+    int location, len = length();
     struct node *temp = root;
     struct node *p = NULL;
 
@@ -277,16 +278,16 @@ void deleteInBetween()
         printf("The list had %d nodes", len);
     }
 
-    if (position == 1)
+    if (location == 1)
     {
         root = deleteFromBeginning();
         return root;
     }
 
-    while(position > location)
+    while(i < location)
     {
         temp = temp->next;
-        position--;
+        i++;
     }
 
     if(temp->next == NULL)
