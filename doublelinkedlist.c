@@ -8,6 +8,8 @@ int length();
 void display();
 void reverse();
 void deleteFromBeginning();
+void deleteInBetween();
+void deleteAtEnd();
 
 struct node
 {
@@ -27,12 +29,14 @@ void main()
         printf("Choose an option: \n");
         printf("1. Insert at the beginning \n");
         printf("2. Insert in between \n");
-        printf("3. Insert at end\n");
+        printf("3. Insert at end \n");
         printf("4. Length \n");
         printf("5. Display elements \n");
         printf("6. Reverse List \n");
         printf("7. Delete from beginning\n");
-        printf("8. Quit \n");
+        printf("8. Delete in between \n");
+        printf("9. Delete at end \n");
+        printf("10. Quit \n");
         scanf("%d", &choice);
 
         switch (choice)
@@ -66,6 +70,14 @@ void main()
             break;
 
         case 8:
+            deleteInBetween();
+            break;
+
+        case 9:
+            deleteAtEnd();
+            break;
+
+        case 10:
             exit(0);
 
         default:
@@ -178,7 +190,7 @@ void addAtEnd()
 int length()
 {
     struct node *temp = root;
-    ;
+    
     int count = 0;
 
     while (temp != NULL)
@@ -248,4 +260,62 @@ void deleteFromBeginning()
 
         free(temp);
     }
+}
+
+void deleteInBetween()
+{
+    int location, len=length();
+    struct node *temp = root;
+    struct node *p = NULL;
+
+    printf("Enter the location to be deleted: \n");
+    scanf("%d", &location);
+
+    if (0 >= location > len)
+    {
+        printf("Invalid location! \n");
+        printf("The list had %d nodes", len);
+    }
+
+    if (position == 1)
+    {
+        root = deleteFromBeginning();
+        return root;
+    }
+
+    while(position > location)
+    {
+        temp = temp->next;
+        position--;
+    }
+
+    if(temp->next == NULL)
+    {
+        root = deleteAtEnd();
+    }
+    else
+    {
+        p = temp->prev;
+        p->next = temp->next;
+        temp->next->prev = p;
+        free(temp);
+        temp = NULL;
+        printf("Node deleted!\n");
+    }
+}
+
+void deleteAtEnd()
+{
+    struct node *temp = root, *p = NULL;
+
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    p = temp->prev;
+    p->next = NULL;
+    free(temp);
+    temp = NULL;
+    printf("Node deleted! \n");
 }
