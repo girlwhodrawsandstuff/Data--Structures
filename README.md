@@ -5,3 +5,4 @@ Data Structures implemented in C.
 * Stacks
 * Singly Linked Lists
 * Doubly Linked Lists
+* Circular Linked Lists
