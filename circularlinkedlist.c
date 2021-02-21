@@ -15,7 +15,7 @@ struct node
     struct node *next;
 };
 
-struct node *root = NULL;
+struct node *tail = NULL;
 
 void main()
 {
@@ -75,27 +75,123 @@ void main()
 
 void addAtBegin()
 {
+    struct node *newNode;
+    newNode = (struct node *)malloc(sizeof(struct node));
 
+    printf("Enter the data: \n");
+    scanf("%d", &newNode->data);
+    newNode->next = NULL;
+
+    if (tail == 0)
+    {
+        tail = newNode;
+        tail->next = newNode;
+    }
+    else
+    {
+        newNode->next = tail->next;
+        tail->next = newNode;
+    }
 }
 
 void addInBetween()
 {
+    struct node *newNode, *temp;
+    int location, i = 1, len;
 
+    printf("Enter the location: \n");
+    scanf("%d", &pos);
+
+    len = length();
+    
+    if (location < 0 || location > len)
+    {
+        printf("Invalid position.\n");
+        printf("List has %d nodes\n");
+    }
+    else if (location == 1)
+    {
+        addAtBegin();
+    }
+    else
+    {
+        newNode = (struct node *)malloc(sizeof(struct node));
+        printf("Enter data: \n");
+        scanf("%d", &newNode->data);
+        newNode->next = 0;
+
+        temp = tail->next;
+        while (i < location - 1)
+        {
+            temp = temp->next;
+            i++;
+        }
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
 }
 
 void addAtEnd()
 {
+    struct node *newNode;
+    newNode = (struct node *)malloc(sizeof(struct node));
 
+    printf("Enter the data: \n");
+    scanf("%d", &newNode->data);
+    newNode->next = NULL;
+
+    if (tail == 0)
+    {
+        tail = newNode;
+        tail->next = newNode;
+    }
+    else
+    {
+        newNode->next = tail->next;
+        tail->next = newNode;
+        tail = newNode;
+    }
 }
 
 int length()
 {
+    struct node *temp;
+    int count = 0;
 
+    if (tail == 0)
+    {
+        printf("List is empty.\n");
+    }
+    else
+    {
+        while (temp->next != tail)
+        {
+            count++;
+            temp = tail;
+            temp = temp->next;
+        }
+    }
+
+    return count;
 }
 
 void display()
 {
-
+    struct node *temp;
+    if (tail == 0)
+    {
+        printf("List is empty. \n");
+    }
+    else
+    {
+        while (temp->next != tail)
+        {
+            temp = tail;
+            printf("%d -> ", temp->data);
+            temp = temp->next;
+        }
+        printf("%d", temp->data);
+    }
 }
 
 void reverse()
