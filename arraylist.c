@@ -75,7 +75,7 @@ void insert() {
 }
 
 void delete() {
-  printf("Enter the position of the number to be deleted: \n");
+  printf("Enter the position of the number to be deleted:\n");
   scanf("%d", &position);
   
   if(position <= 0 || position > size) {
@@ -86,6 +86,5 @@ void delete() {
     }
     size--;
     printf("Item deleted!\n");
-    traverse();
   }
 }
