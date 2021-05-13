@@ -57,7 +57,21 @@ void traverse() {
 }
 
 void insert() {
-  printf("insert");
+  printf("Enter the number to be inserted:\n");
+  scanf("%d", &number);
+  printf("Enter the position of the number to be inserted:\n");
+  scanf("%d", &position);
+  size++;
+
+  if(position <= 0 || position > size + 1) {
+    printf("Invalid position!\n");
+  } else {
+    for(i = size -1; i >= position - 1; i--) {
+      array[i + 1] = array[i];
+    }
+    array[position - 1] = number;
+    printf("Element inserted!\n");
+  }
 }
 
 void delete() {
