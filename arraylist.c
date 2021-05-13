@@ -5,8 +5,8 @@
 #define MAX_SIZE 50
 
 void traverse();
-void delete(int);
-void insert(int);
+void insert();
+void delete();
 
 int array[MAX_SIZE], size, i, number, position;
 
@@ -33,10 +33,10 @@ void main() {
       traverse();
       break;
     case 2:
-      insert(2);
+      insert();
       break;
     case 3:
-      delete(3);
+      delete();
       break;
     case 4:
       exit(0);
@@ -56,10 +56,22 @@ void traverse() {
   printf("\n");
 }
 
-void delete(int deletedPosition) {
-  printf("delete");
+void insert() {
+  printf("insert");
 }
 
-void insert(int insertedNumber) {
-  printf("insert");
+void delete() {
+  printf("Enter the position of the number to be deleted: \n");
+  scanf("%d", &position);
+  
+  if(position <= 0 || position > size) {
+    printf("Invalid position");
+  } else {
+    for(i = position-1; i <= size; i++) {
+      array[i] = array[i + 1];
+    }
+    size--;
+    printf("Item deleted!\n");
+    traverse();
+  }
 }
