@@ -8,8 +8,9 @@ void traverse();
 void delete(int);
 void insert(int);
 
+int array[MAX_SIZE], size, i, number, position;
+
 void main() {
-  int array[MAX_SIZE], size, i, number, position, choice;
   printf("Enter size of array:\n");
   scanf("%d", & size);
   printf("Enter the elements of the array:\n");
@@ -18,14 +19,15 @@ void main() {
     scanf("%d", & array[i]);
   }
 
-  printf("Choose an option (number): \n");
-  printf("1. Traverse array \n");
-  printf("2. Insert an element into the array \n");
-  printf("3. Delete an element from the array \n");
-  printf("4. Quit \n");
-  scanf("%d", & choice);
-
   while (1) {
+  int choice;
+    printf("Choose an option (number): \n");
+    printf("1. Traverse array \n");
+    printf("2. Insert an element into the array \n");
+    printf("3. Delete an element from the array \n");
+    printf("4. Quit \n");
+    scanf("%d", & choice);
+
     switch (choice) {
     case 1:
       traverse();
@@ -42,12 +44,16 @@ void main() {
     default:
       printf("Invalid choice");
     };
-  }
 
+  }
 }
 
 void traverse() {
-  printf("traverse");
+  printf("Elements of the array are:\n");
+  for(i = 0; i < size; i++) {
+    printf("%d ", array[i]);
+  }
+  printf("\n");
 }
 
 void delete(int deletedPosition) {
