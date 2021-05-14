@@ -51,31 +51,39 @@ void main() {
 
 void push(int item) {
   if (top >= CAPACITY - 1) {
-    printf("Stack is overflowed. \n");
+    printf("Stack is overflowed.\n\n");
   } else {
     top++;
     stack[top] = item;
-    printf("Element pushed\n");
+    printf("Element pushed\n\n");
   }
 }
 
 int pop(void) {
   if (top == -1) {
-    printf("Stack is empty\n");
+    printf("Stack is empty\n\n");
   } else {
-    printf("Popped item: %d\n", stack[top]);
+    printf("Popped item: %d\n\n", stack[top]);
     top--;
   }
 }
 
 void traverse(void) {
-  printf("Elements of the stack are (from bottom to top): \n");
-  for (int i = top; i >= 0; i--) {
-    printf("%d\n", stack[i]);
+  if(top == -1) {
+    printf("Stack is empty\n\n");
+  } else {
+    printf("Elements of the stack are (from bottom to top): \n");
+      for (int i = top; i >= 0; i--) {
+        printf("%d\n", stack[i]);
+      }
   }
 }
 
 void peek(void) {
-  printf("The topmost element of the stack is: \n");
-  printf("%d\n", stack[top]);
+  if(top == -1) {
+    printf("Stack is empty\n\n");
+  } else {
+    printf("The topmost element of the stack is:\n\n");
+    printf("%d\n", stack[top]);
+  }
 }
