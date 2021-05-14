@@ -11,7 +11,7 @@ void delete();
 int array[MAX_SIZE], size, i, number, position;
 
 void main() {
-  printf("Enter size of array:\n");
+  printf("Enter size of array. It should be 50 or less:\n");
   scanf("%d", & size);
   printf("Enter the elements of the array:\n");
 
