@@ -5,6 +5,9 @@ void main() {
 
     printf("Enter order of the matrix (should be less than 5x5): \n");
     scanf("%d%d", &rows, &columns);
+    if((rows <= 0 || rows > 5) || (columns <=0 || columns > 5)) {
+        printf("Invalid matrix order.\n");
+    } else {
     printf("Enter the elements: \n");
     for(i = 0; i < rows; i++) {
         for(j = 0; j < columns; j++) {
@@ -19,5 +22,5 @@ void main() {
             }
         }
     }
-   
+    }
 }
