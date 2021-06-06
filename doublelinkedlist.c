@@ -280,8 +280,7 @@ void deleteInBetween()
 
     if (location == 1)
     {
-        root = deleteFromBeginning();
-        return root;
+        deleteFromBeginning();
     }
 
     while(i < location)
@@ -292,7 +291,7 @@ void deleteInBetween()
 
     if(temp->next == NULL)
     {
-        root = deleteAtEnd();
+        deleteAtEnd();
     }
     else
     {
