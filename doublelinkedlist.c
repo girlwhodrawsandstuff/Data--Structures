@@ -11,8 +11,7 @@ void deleteFromBeginning();
 void deleteInBetween();
 void deleteAtEnd();
 
-struct node
-{
+struct node {
     int data;
     struct node *prev;
     struct node *next;
@@ -20,12 +19,10 @@ struct node
 
 struct node *root = NULL;
 
-void main()
-{
+void main() {
     int choice;
 
-    while (1)
-    {
+    while (1) {
         printf("Choose an option: \n");
         printf("1. Insert at the beginning \n");
         printf("2. Insert in between \n");
@@ -39,8 +36,7 @@ void main()
         printf("10. Quit \n");
         scanf("%d", &choice);
 
-        switch (choice)
-        {
+        switch (choice) {
         case 1:
             addAtBegin();
             break;
@@ -86,8 +82,7 @@ void main()
     }
 }
 
-void addAtBegin()
-{
+void addAtBegin() {
     struct node *temp;
     temp = (struct node *)malloc(sizeof(struct node));
 
@@ -99,9 +94,7 @@ void addAtBegin()
     if (root == NULL)
     {
         root = temp;
-    }
-    else
-    {
+    } else {
         // next side connection
         temp->next = root;
         // prev side connection
@@ -112,26 +105,21 @@ void addAtBegin()
     printf("Node added!\n");
 }
 
-void addInBetween()
-{
-    struct node *temp, *p;
-    int location, len, i;
+void addInBetween() {
+    struct node * temp, * p;
+    int location, len, i = 1;
     len = length();
 
     printf("Enter the location for insertion: \n");
-    scanf("%d", &location);
+    scanf("%d", & location);
 
-    if (location > len)
-    {
+    if (location > len) {
         printf("Invalid location. \n");
         printf("Length of the list is %d\n", len);
     }
-    else if (len < 2)
-    {
+    else if (len < 2) {
         printf("The list must have at least 2 nodes to insert in between\n");
-    }
-    else
-    {
+    } else {
         temp = (struct node *)malloc(sizeof(struct node));
         p = root;
 
@@ -140,9 +128,9 @@ void addInBetween()
         temp->next = NULL;
         temp->prev = NULL;
 
-        while (p < location)
-        {
+        while (i < location) {
             p = p->next;
+            i++;
         }
 
         // next side connection for temp
