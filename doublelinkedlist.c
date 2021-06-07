@@ -229,6 +229,7 @@ void deleteFromBeginning() {
 
     free(temp);
   }
+  printf("Node deleted!\n");
 }
 
 void deleteInBetween() {
@@ -243,26 +244,23 @@ void deleteInBetween() {
   if (0 >= location > len) {
     printf("Invalid location! \n");
     printf("The list had %d nodes", len);
-  }
-
-  if (location == 1) {
+  } else if (location == 1) {
     deleteFromBeginning();
-  }
-
-  while (i < location) {
-    temp = temp -> next;
-    i++;
-  }
-
-  if (temp -> next == NULL) {
-    deleteAtEnd();
   } else {
-    p = temp -> prev;
-    p -> next = temp -> next;
-    temp -> next -> prev = p;
-    free(temp);
-    temp = NULL;
-    printf("Node deleted!\n");
+    while (i < location) {
+        temp = temp -> next;
+        i++;
+    }
+
+    if (temp -> next == NULL) {
+        deleteAtEnd();
+    } else {
+        p = temp -> prev;
+        p -> next = temp -> next;
+        temp -> next -> prev = p;
+        free(temp);
+        printf("Node deleted!\n");
+    }
   }
 }
 
