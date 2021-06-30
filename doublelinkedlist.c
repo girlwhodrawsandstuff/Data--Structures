@@ -192,6 +192,7 @@ void display() {
       printf("%d -> ", temp -> data);
       temp = temp -> next;
     }
+    printf("\n");
   }
 }
 
@@ -211,7 +212,6 @@ void reverse() {
 
   root = current;
   printf("List reversed!\n");
-  return root;
 }
 
 void deleteFromBeginning() {
