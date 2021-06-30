@@ -100,7 +100,7 @@ void addInBetween()
     int location, i = 1, len;
 
     printf("Enter the location: \n");
-    scanf("%d", &pos);
+    scanf("%d", &location);
 
     len = length();
     
