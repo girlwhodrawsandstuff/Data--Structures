@@ -5,6 +5,7 @@
 
 void push();
 void pop();
+void display();
 
 struct node {
     int data;
@@ -16,6 +17,9 @@ struct node * top = NULL;
 void main() {
     push(2);
     pop();
+    push(4);
+    push(16);
+    display();
 }
 
 void push(int value) {
@@ -40,5 +44,22 @@ void pop() {
         temp -> next = NULL;
         free(temp);
         printf("Value deleted from the stack!\n");
+    }
+}
+
+void display() {
+    struct node * temp;
+    
+    if(top == NULL) {
+        printf("The stack is empty!\n");
+    } else {
+        temp = top; 
+
+        printf("The elements are:\n");
+
+        while(temp != NULL) {
+            printf("%d\n", temp -> data);
+            temp = temp -> next;
+        }
     }
 }
