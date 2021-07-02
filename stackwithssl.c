@@ -6,6 +6,7 @@
 void push();
 void pop();
 void display();
+void peek();
 
 struct node {
     int data;
@@ -20,6 +21,7 @@ void main() {
     push(4);
     push(16);
     display();
+    peek();
 }
 
 void push(int value) {
@@ -61,5 +63,13 @@ void display() {
             printf("%d\n", temp -> data);
             temp = temp -> next;
         }
+    }
+}
+
+void peek() {
+    if(top == NULL) {
+        printf("The stack is empty!\n");
+    } else {
+        printf("The top-most value in the stack is %d\n", top -> data);
     }
 }
