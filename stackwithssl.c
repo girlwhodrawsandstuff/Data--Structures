@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 void push();
+void pop();
 
 struct node {
     int data;
@@ -14,6 +15,7 @@ struct node * top = NULL;
 
 void main() {
     push(2);
+    pop();
 }
 
 void push(int value) {
@@ -25,4 +27,18 @@ void push(int value) {
     top = newnode;
 
     printf("Value added!\n");
+}
+
+void pop() {
+    struct node * temp;
+
+    if(top == NULL) {
+        printf("The stack is empty!\n");
+    } else {
+        temp = top;
+        top = top -> next;
+        temp -> next = NULL;
+        free(temp);
+        printf("Value deleted from the stack!\n");
+    }
 }
