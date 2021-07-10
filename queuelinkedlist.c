@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 void addElement();
+void deleteElement();
 
 struct node {
     int data;
@@ -13,6 +14,7 @@ struct node * rear = 0;
 
 void main() {
     addElement(5);
+    deleteElement();
 }
 
 void addElement(int value) {
@@ -28,5 +30,16 @@ void addElement(int value) {
         rear -> next = newNode;
         rear = newNode;
         printf("Element added!\n");
+    }
+}
+
+void deleteElement() {
+    struct node * temp;
+    if(front == 0 && rear == 0) {
+        printf("The queue is empty.\n");
+    } else {
+        printf("Element '%d' was deleted.\n", front -> data);
+        front = front -> next;
+        free(temp);
     }
 }
