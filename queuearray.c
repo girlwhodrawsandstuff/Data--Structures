@@ -3,17 +3,19 @@
 #include <stdio.h>
 #define CAPACITY 5
 
-void addToQueue();
+void addElement();
+void deleteElement();
 
 int queue[CAPACITY];
 int front = -1;
 int rear = -1;
 
 void main() {
-    addToQueue(5);
+    addElement(5);
+    deleteElement();
 }
 
-void addToQueue(int value) {
+void addElement(int value) {
     if(rear == (CAPACITY - 1))
     {
         printf("The queue is full.\n");
@@ -28,3 +30,15 @@ void addToQueue(int value) {
     }
 }
 
+void deleteElement() {
+    if(front == -1 && rear == -1) {
+        printf("The queue is empty.\n");
+    } else if(front == rear) {
+        printf("Element '%d' has been deleted.\n", queue[front]);
+        front = rear = -1;
+        printf("The queue is now empty.\n");
+    } else {
+        printf("Element '%d' has been deleted.\n", queue[front]);
+        front++;
+    }
+}
