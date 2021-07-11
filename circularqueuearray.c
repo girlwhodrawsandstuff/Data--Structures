@@ -4,6 +4,7 @@
 
 void addElement();
 void deleteElement();
+void displayElements();
 
 int queue[CAPACITY];
 int front = -1;
@@ -12,6 +13,8 @@ int rear = -1;
 void main() {
     addElement(5);
     deleteElement();
+    addElement(10);
+    displayElements();
 }
 
 void addElement(int value) {
@@ -37,5 +40,20 @@ void deleteElement() {
     } else {
         printf("'%d' was deleted.\n", queue[front]);
         front = (front + 1) % CAPACITY;
+    }
+}
+
+void displayElements() {
+    if(front == -1 && rear == -1) {
+        printf("The queue is empty.\n");
+    } else {
+        int i = front;
+        printf("The elements of the queue are: \n");
+        while (i != rear)
+        {
+            printf("%d\n", queue[i]);
+            i = (i + 1) % CAPACITY;
+        }
+        printf("%d\n", queue[rear]);
     }
 }
