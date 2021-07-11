@@ -17,6 +17,8 @@ void main() {
     addElement(5);
     displayElements();
     deleteElement();
+    addElement(5);
+    displayElements();
 }
 
 void addElement(int value) {
@@ -39,6 +41,10 @@ void deleteElement() {
     struct node * temp;
     if(front == 0 && rear == 0) {
         printf("The queue is empty.\n");
+    } else if (front -> next == 0) {
+        printf("Element '%d' was deleted. The queue is now empty.\n", front -> data);
+        front = front -> next;
+        rear = front;
     } else {
         printf("Element '%d' was deleted.\n", front -> data);
         front = front -> next;
