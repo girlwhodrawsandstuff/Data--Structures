@@ -3,6 +3,7 @@
 
 void addElement();
 void deleteElement();
+void displayElements();
 
 struct node {
     int data;
@@ -14,6 +15,7 @@ struct node * rear = 0;
 
 void main() {
     addElement(5);
+    displayElements();
     deleteElement();
 }
 
@@ -41,5 +43,24 @@ void deleteElement() {
         printf("Element '%d' was deleted.\n", front -> data);
         front = front -> next;
         free(temp);
+    }
+}
+
+void displayElements()
+{
+    struct node *temp;
+    temp = front;
+    if (front == 0)
+    {
+        printf("The queue is empty.\n");
+    }
+    else
+    {
+        printf("The elements are: \n");
+        while (temp != 0)
+        {
+            printf("%d\n", temp->data);
+            temp = temp->next;
+        }
     }
 }
