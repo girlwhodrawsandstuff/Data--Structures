@@ -31,7 +31,7 @@ void addElement(int value) {
     } else {
         rear++;
         queue[rear] = value;
-        printf("Element0. added!\n");
+        printf("Element added!\n");
     }
 }
 
