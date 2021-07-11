@@ -4,6 +4,7 @@
 void addElement();
 void deleteElement();
 void displayElements();
+void peek();
 
 struct node {
     int data;
@@ -17,8 +18,10 @@ void main() {
     addElement(5);
     displayElements();
     deleteElement();
-    addElement(5);
+    addElement(10);
+    addElement(30);
     displayElements();
+    peek();
 }
 
 void addElement(int value) {
@@ -68,5 +71,14 @@ void displayElements()
             printf("%d\n", temp->data);
             temp = temp->next;
         }
+    }
+}
+
+void peek() {
+    if (front == 0)
+    {
+        printf("The queue is empty.\n");
+    } else {
+        printf("'%d' is the first element of the queue.\n", front -> data);
     }
 }
