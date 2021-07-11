@@ -5,6 +5,7 @@
 void addElement();
 void deleteElement();
 void displayElements();
+void peek();
 
 int queue[CAPACITY];
 int front = -1;
@@ -14,7 +15,9 @@ void main() {
     addElement(5);
     deleteElement();
     addElement(10);
+    addElement(15);
     displayElements();
+    peek();
 }
 
 void addElement(int value) {
@@ -56,4 +59,14 @@ void displayElements() {
         }
         printf("%d\n", queue[rear]);
     }
+}
+
+void peek() {
+    if (front == -1 && rear == -1)
+    {
+        printf("The queue is empty.\n");
+    } else {
+        printf("The first element of the queue is '%d'.\n", queue[front]);
+    }
+    
 }
