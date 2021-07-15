@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 void addToQueue();
+void deleteFromQueue();
 
 struct node {
     int data;
@@ -15,6 +16,9 @@ struct node * rear = 0;
 
 void main() {
     addToQueue(5);
+    addToQueue(10);
+    deleteFromQueue();
+    addToQueue(15);
 }
 
 void addToQueue(int value) {
@@ -32,5 +36,24 @@ void addToQueue(int value) {
         rear = newNode;
         rear -> next = front;
         printf("'%d' added to the queue.\n", rear -> data);
+    }
+}
+
+void deleteFromQueue() {
+    struct node * temp;
+    temp = front;
+
+    if(front == 0) {
+        printf("The queue is empty.\n");
+    } else if(front == rear) {
+        printf("The value '%d' was deleted.\n", temp -> data);
+        front = rear = 0;
+        free(temp);
+        printf("The queue is now empty.\n");
+    } else {
+        printf("The value '%d' was deleted.\n", temp -> data);
+        front = front -> next;
+        rear -> next = front;
+        free(temp);
     }
 }
