@@ -5,6 +5,7 @@
 
 void addToQueue();
 void deleteFromQueue();
+void displayElements();
 
 struct node {
     int data;
@@ -19,6 +20,7 @@ void main() {
     addToQueue(10);
     deleteFromQueue();
     addToQueue(15);
+    displayElements();
 }
 
 void addToQueue(int value) {
@@ -55,5 +57,21 @@ void deleteFromQueue() {
         front = front -> next;
         rear -> next = front;
         free(temp);
+    }
+}
+
+void displayElements() {
+    struct node * temp;
+    temp = front;
+
+    if(front == 0) {
+        printf("The queue is empty.\n");
+    } else {
+        printf("The elements are:\n");
+        while(temp -> next != front) {
+            printf("%d\n", temp -> data);
+            temp = temp -> next;
+        }
+        printf("%d\n", temp -> data);
     }
 }
