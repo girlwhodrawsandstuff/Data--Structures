@@ -19,3 +19,4 @@ Data Structures implemented in C.
   - linear queue using array
   - circular queue using array
   - queue using singly linked list
+  - circular queue using singly linked list
