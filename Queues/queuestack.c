@@ -9,6 +9,7 @@ void dequeue();
 int pop1();
 int pop2();
 void push2();
+void display();
 
 int firstStack[CAPACITY], secondStack[CAPACITY];
 int top1 = -1, top2 = -1;
@@ -17,6 +18,9 @@ int count = 0;
 void main() {
     enqueue(5);
     dequeue();
+    enqueue(10);
+    enqueue(15);
+    display();
 }
 
 void enqueue(int value) {
@@ -30,7 +34,6 @@ void push1(int data) {
     } else {
         top1++;
         firstStack[top1] = data;
-        printf("'%d' was added to the queue.\n", data);
     }
 }
 
@@ -83,5 +86,17 @@ void push2(int value) {
     } else {
         top2++;
         secondStack[top2] = value;
+    }
+}
+
+void display() {
+    if (top1 == -1) {
+        printf("The queue is empty.\n");
+    } else {
+        printf("Elements of the stack are:\n");
+        for (int i = 0; i <= top1; i++)
+        {
+            printf("%d\n", firstStack[i]);
+        }
     }
 }
