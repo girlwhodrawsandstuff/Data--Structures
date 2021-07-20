@@ -21,3 +21,4 @@ Data Structures implemented in C.
   - queue using singly linked list
   - circular queue using singly linked list
   - queue using stacks
+  - deque using circular array
