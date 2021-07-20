@@ -10,12 +10,14 @@ int rear = -1;
 void enqueueFront();
 void enqueueRear();
 void display();
+void getFront();
 
 void main() {
     enqueueFront(5);
     enqueueFront(10);
     enqueueRear(15);
     display();
+    getFront();
 }
 
 void enqueueFront(int value) {
@@ -62,4 +64,12 @@ void display() {
         i = (i + 1) % CAPACITY;
     }
     printf("%d\n", deque[i]);
+}
+
+void getFront() {
+    if ((front == 0 && rear == CAPACITY - 1) || (front == rear + 1)) {
+        printf("The queue is full.\n");
+    } else {
+        printf("The front element of the deque is '%d'\n", deque[front]);
+    }
 }
