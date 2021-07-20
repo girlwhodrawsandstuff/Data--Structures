@@ -13,6 +13,7 @@ void display();
 void getFront();
 void getRear();
 void dequeueFront();
+void dequeueRear();
 
 void main() {
     enqueueFront(5);
@@ -22,6 +23,7 @@ void main() {
     getFront();
     getRear();
     dequeueFront();
+    dequeueRear();
 }
 
 void enqueueFront(int value) {
@@ -100,4 +102,19 @@ void dequeueFront() {
         front++;
     }
     
+}
+
+void dequeueRear() {
+    if(front == -1 && rear == -1) {
+        printf("The queue is empty.\n");
+    } else if(rear == front) {
+        printf("'%d' was dequeued from the rear of the queue.\n", deque[rear]);
+        front = rear = -1;
+    } else if(rear == 0) {
+        printf("'%d' was dequeued from the rear of the queue.\n", deque[rear]);
+        rear = CAPACITY - 1;
+    } else {
+        printf("'%d' was dequeued from the rear of the queue.\n", deque[rear]);
+        rear--;
+    }
 }
