@@ -93,7 +93,7 @@ void display() {
     if (top1 == -1) {
         printf("The queue is empty.\n");
     } else {
-        printf("Elements of the stack are:\n");
+        printf("Elements of the queue are:\n");
         for (int i = 0; i <= top1; i++)
         {
             printf("%d\n", firstStack[i]);
