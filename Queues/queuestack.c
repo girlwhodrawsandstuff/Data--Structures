@@ -3,28 +3,28 @@
 #include <stdio.h>
 #define CAPACITY 5
 
-void addToQueue();
-void pushToFirstStack();
-void deleteFromQueue();
-int popFromFirstStack();
-int popFromSecondStack();
-void pushToSecondStack();
+void enqueue();
+void push1();
+void dequeue();
+int pop1();
+int pop2();
+void push2();
 
 int firstStack[CAPACITY], secondStack[CAPACITY];
 int top1 = -1, top2 = -1;
 int count = 0;
 
 void main() {
-    addToQueue(5);
-    deleteFromQueue();
+    enqueue(5);
+    dequeue();
 }
 
-void addToQueue(int value) {
-    pushToFirstStack(value);
+void enqueue(int value) {
+    push1(value);
     count++;
 }
 
-void pushToFirstStack(int data) {
+void push1(int data) {
     if(top1 == CAPACITY - 1) {
         printf("The queue is full.\n");
     } else {
@@ -34,28 +34,28 @@ void pushToFirstStack(int data) {
     }
 }
 
-void deleteFromQueue() {
+void dequeue() {
     int i, a, b;
     if(top1 == -1 && top2 == -1) {
         printf("The queue is empty.\n");
     } else {
         for(i = 0; i < count; i++) {
-            a = popFromFirstStack();
-            pushToSecondStack(a);
+            a = pop1();
+            push2(a);
         }
 
-        b = popFromSecondStack();
+        b = pop2();
         printf("'%d' was deleted from the queue.\n", b);
         count--;
 
         for(i = 0; i < count; i++) {
-            a = popFromSecondStack();
-            pushToFirstStack(a);
+            a = pop2();
+            push1(a);
         }
     }
 }
 
-int popFromFirstStack() {
+int pop1() {
     if(top1 == -1 && top2 == -1) {
         printf("The queue is empty.\n");
     } else {
@@ -66,7 +66,7 @@ int popFromFirstStack() {
     }
 }
 
-int popFromSecondStack() {
+int pop2() {
     if(top1 == -1 && top2 == -1) {
         printf("The queue is empty.\n");
     } else {
@@ -77,7 +77,7 @@ int popFromSecondStack() {
     }
 }
 
-void pushToSecondStack(int value) {
+void push2(int value) {
     if(top2 == CAPACITY - 1) {
         printf("The queue is full.\n");
     } else {
