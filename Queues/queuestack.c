@@ -80,7 +80,7 @@ int popFromSecondStack() {
 void pushToSecondStack(int value) {
     if(top2 == CAPACITY - 1) {
         printf("The queue is full.\n");
-    } else{
+    } else {
         top2++;
         secondStack[top2] = value;
     }
