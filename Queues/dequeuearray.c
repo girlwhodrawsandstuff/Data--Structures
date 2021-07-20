@@ -9,12 +9,13 @@ int rear = -1;
 
 void enqueueFront();
 void enqueueRear();
+void display();
 
 void main() {
     enqueueFront(5);
     enqueueFront(10);
     enqueueRear(15);
-
+    display();
 }
 
 void enqueueFront(int value) {
@@ -51,5 +52,14 @@ void enqueueRear(int value) {
         deque[rear] = value;
         printf("'%d' was added to the rear of the deque.\n", deque[rear]);
     }
-    
+}
+
+void display() {
+    int i = front;
+    printf("The elements of the deque are:\n");
+    while (i != rear) {
+        printf("%d\n", deque[i]);
+        i = (i + 1) % CAPACITY;
+    }
+    printf("%d\n", deque[i]);
 }
