@@ -33,7 +33,19 @@ struct node * create() {
     }
 }
 
+void preorder(struct node * root) {
+    if(root == 0) {
+        return 0;
+    } else {
+        printf("%d\n", root -> data);
+        preorder(root -> left);
+        preorder(root -> right);
+    }
+}
+
 void main() {
     struct node * root;
     root = create();
+    printf("Pre-order is: \n");
+    preorder(root);
 }
