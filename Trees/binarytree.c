@@ -53,6 +53,16 @@ void inorder(struct node * root) {
     }
 }
 
+void postorder(struct node * root) {
+    if(root == 0) {
+        printf("Empty node!\n");
+    } else {
+        preorder(root -> left);
+        preorder(root -> right);
+        printf("%d\n", root -> data);
+    }
+}
+
 void main() {
     struct node * root;
     root = create();
@@ -60,4 +70,6 @@ void main() {
     preorder(root);
     printf("Inorder is: \n");
     inorder(root);
+    printf("Post-order is: \n");
+    postorder(root);
 }
