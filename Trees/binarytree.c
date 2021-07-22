@@ -35,10 +35,20 @@ struct node * create() {
 
 void preorder(struct node * root) {
     if(root == 0) {
-        return 0;
+        printf("Empty node!\n");
     } else {
         printf("%d\n", root -> data);
         preorder(root -> left);
+        preorder(root -> right);
+    }
+}
+
+void inorder(struct node * root) {
+    if(root == 0) {
+        printf("Empty node!\n");
+    } else {
+        preorder(root -> left);
+        printf("%d\n", root -> data);
         preorder(root -> right);
     }
 }
@@ -48,4 +58,6 @@ void main() {
     root = create();
     printf("Pre-order is: \n");
     preorder(root);
+    printf("Inorder is: \n");
+    inorder(root);
 }
