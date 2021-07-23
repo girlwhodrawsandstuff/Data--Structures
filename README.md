@@ -22,3 +22,6 @@ Data Structures implemented in C.
   - circular queue using singly linked list
   - queue using stacks
   - deque using circular array
+
+### 5. Trees
+  - binary tree using doubly linked lists (recursive)
