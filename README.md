@@ -25,3 +25,7 @@ Data Structures implemented in C.
 
 ### 5. Trees
   - binary tree using doubly linked lists (recursive)
+
+### 6. Searching
+  - linear search
+  
