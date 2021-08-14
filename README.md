@@ -28,4 +28,5 @@ Data Structures implemented in C.
 
 ### 6. Searching
   - linear search
+  - binary search
   
