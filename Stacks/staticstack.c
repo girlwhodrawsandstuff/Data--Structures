@@ -72,7 +72,7 @@ void traverse(void) {
   if(top == -1) {
     printf("Stack is empty\n\n");
   } else {
-    printf("Elements of the stack are (from bottom to top): \n");
+    printf("Elements of the stack are (from top to bottom): \n");
       for (int i = top; i >= 0; i--) {
         printf("%d\n", stack[i]);
       }
