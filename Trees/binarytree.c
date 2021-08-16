@@ -47,9 +47,9 @@ void inorder(struct node * root) {
     if(root == 0) {
         printf("Empty node!\n");
     } else {
-        preorder(root -> left);
+        inorder(root -> left);
         printf("%d\n", root -> data);
-        preorder(root -> right);
+        inorder(root -> right);
     }
 }
 
@@ -57,8 +57,8 @@ void postorder(struct node * root) {
     if(root == 0) {
         printf("Empty node!\n");
     } else {
-        preorder(root -> left);
-        preorder(root -> right);
+        postorder(root -> left);
+        postorder(root -> right);
         printf("%d\n", root -> data);
     }
 }
