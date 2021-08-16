@@ -196,10 +196,10 @@ void display()
 
 void reverse()
 {
-
+    /* TODO */
 }
 
 void delete ()
 {
-
+    /* TODO */
 }

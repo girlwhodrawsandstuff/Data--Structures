@@ -85,7 +85,7 @@ void main() {
 
 void addAtBegin() {
   struct node * temp;
-  temp = (struct node * ) malloc(sizeof(struct node));
+  temp = (struct node *)malloc(sizeof(struct node));
 
   printf("Enter the node data: \n");
   scanf("%d", & temp -> data);
@@ -119,7 +119,7 @@ void addInBetween() {
   } else if (len < 2) {
     printf("The list must have at least 2 nodes to insert in between\n");
   } else {
-    temp = (struct node * ) malloc(sizeof(struct node));
+    temp = (struct node *)malloc(sizeof(struct node));
     p = root;
 
     printf("Enter the node data: \n");
@@ -146,7 +146,7 @@ void addInBetween() {
 
 void addAtEnd() {
   struct node * temp;
-  temp = (struct node * ) malloc(sizeof(struct node));
+  temp = (struct node *)malloc(sizeof(struct node));
 
   printf("Enter the node data: \n");
   scanf("%d", & temp -> data);

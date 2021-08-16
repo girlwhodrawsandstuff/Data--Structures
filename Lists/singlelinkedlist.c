@@ -17,6 +17,7 @@ struct node {
 };
 
 struct node * root = NULL;
+
 void main() {
   int choice;
 
@@ -88,7 +89,7 @@ void addAtBegin() {
 
 void addInBetween() {
   struct node * temp, * p;
-  temp = (struct node * ) malloc(sizeof(struct node));
+  temp = (struct node *)malloc(sizeof(struct node));
   int location, len, i = 1;
 
   printf("Enter the location for insertion: \n");
@@ -116,7 +117,7 @@ void addInBetween() {
 
 void addAtEnd() {
   struct node * temp;
-  temp = (struct node * ) malloc(sizeof(struct node));
+  temp = (struct node *)malloc(sizeof(struct node));
   printf("Enter node data: \n");
   scanf("%d", & temp -> data);
   temp -> next = NULL;
@@ -139,7 +140,7 @@ void addAtEnd() {
 int length() {
   // iterative method
   struct node * temp;
-  temp = (struct node * ) malloc(sizeof(struct node));
+  temp = (struct node *)malloc(sizeof(struct node));
   temp = root;
 
   int count = 0;
@@ -234,7 +235,7 @@ void swap() {
 
 void delete() {
   struct node * temp;
-  temp = (struct node * ) malloc(sizeof(struct node));
+  temp = (struct node *)malloc(sizeof(struct node));
   int location, len;
   len = length();
 
@@ -248,7 +249,6 @@ void delete() {
     temp = root;
     // assigning new right side connection
     root = temp -> next;
-
     // removing the old connection
     temp -> next = NULL;
     free(temp);
