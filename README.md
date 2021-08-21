@@ -31,3 +31,5 @@ Data Structures implemented in C.
   - binary search
 
 ### 7. Sorting
+  - bubble sort
+  
